@@ -4,3 +4,5 @@ isbn.py
 Pipfile*
 isbn-list.txt
 books.csv
+images/
+venv/

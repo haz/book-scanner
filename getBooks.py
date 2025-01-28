@@ -1,6 +1,6 @@
 from BarcodeScanner import BarcodeScanner
 from BookTool import BookTool
-import os
+import os, tqdm
 
 scanner = BarcodeScanner()
 bt = BookTool()
@@ -8,7 +8,7 @@ images = os.listdir("images")
 outFile = "books.csv"
 
 # Loop through all the images in the images directory
-for image in images:
+for image in tqdm.tqdm(images):
     path = "images/" + image
 
     # Get the barcode (ISBN) of the image

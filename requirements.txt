@@ -2,3 +2,5 @@ isbnlib
 numpy
 opencv-python
 pyzbar
+setuptools
+tqdm
