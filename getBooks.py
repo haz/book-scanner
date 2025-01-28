@@ -9,14 +9,20 @@ outFile = "books.csv"
 
 # Loop through all the images in the images directory
 for image in images:
-  path = "images/" + image
+    path = "images/" + image
 
-  # Get the barcode (ISBN) of the image
-  ISBN = scanner.getCode(path)
-  
-  # Get the book
-  book = bt.getBookInfo(ISBN)
+    # Get the barcode (ISBN) of the image
+    ISBN = scanner.getCode(path)
 
-  # If the book info was recovered correctly, write to file
-  if book:
-    bt.writeInfo(book, outFile)
+    if not ISBN:
+        print("No barcode found in image: " + path)
+        continue
+
+    # Get the book
+    book = bt.getBookInfo(ISBN)
+
+    # If the book info was recovered correctly, write to file
+    if book:
+        bt.writeInfo(book, outFile, image)
+    else:
+        print("No book found with ISBN: " + ISBN)

@@ -14,11 +14,12 @@ class BarcodeScanner:
 
         # Find barcodes
         barcodes = decode(gray)
-        
-        # Retrieve and return first barcode
-        barcodeData = barcodes[0].data.decode("utf-8")       
 
-        return barcodeData
+        # Retrieve and return first barcode
+        if barcodes:
+            return barcodes[0].data.decode("utf-8")
+        else:
+            return None
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
